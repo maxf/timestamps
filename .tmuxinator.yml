@@ -1,0 +1,10 @@
+name: timestamps
+root: ~/dev/timestamps
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - emacs -nw .
+        - http-server
+        -
