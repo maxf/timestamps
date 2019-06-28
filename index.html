@@ -5,7 +5,12 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ message }}</p>
+      <h1>Timestamps</h1>
+      <button v-on:click="addTimestamp">New</button>
+      <button v-on:click="reset">Reset</button>
+      <ul>
+        <li v-for="t in timestamps">{{ formatTimestamp(t) }}</li>
+      </ul>
     </div>
     <script src="main.js"></script>
   </body>
