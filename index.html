@@ -6,7 +6,13 @@
   <body>
     <div id="app">
       <h1>Timestamps</h1>
-      <button v-on:click="addTimestamp">New</button>
+      <button v-on:click="prepareNewTimestamp">New</button>
+      <input v-model="newTimestamp.date" type="number" placeholder="date"/>
+      <input v-model="newTimestamp.month" placeholder="month"/>
+      <input v-model="newTimestamp.year" placeholder="year"/>
+      <input v-model="newTimestamp.hours" placeholder="hours"/>
+      <input v-model="newTimestamp.minutes" placeholder="minutes"/>
+      <button v-on:click="addTimestamp">Add</button>
       <button v-on:click="reset">Reset</button>
       <ul>
         <li v-for="t in timestamps">{{ formatTimestamp(t) }}</li>
