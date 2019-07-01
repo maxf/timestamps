@@ -1,14 +1,17 @@
 (function() {
 
+  const emptyTimestamp = {
+    date: '',
+    month: '',
+    year: '',
+    hours: '',
+    minutes: ''
+  };
+
+
   const appState = {
     timestamps: [],
-    newTimestamp: {
-      date: '',
-      month: '',
-      year: '',
-      hours: '',
-      minutes: ''
-    }
+    newTimestamp: emptyTimestamp
   };
 
   const prepareNewTimestamp = function() {
@@ -24,6 +27,7 @@
 
   const addTimestamp = function() {
     appState.timestamps.push(appState.newTimestamp);
+    appState.newTimestamp = emptyTimestamp;
   };
 
   const formatTimestamp = function(d) {
