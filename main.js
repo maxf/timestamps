@@ -30,6 +30,10 @@
     appState.newTimestamp = emptyTimestamp;
   };
 
+  const cancelAddTimestamp = function() {
+    appState.newTimestamp = emptyTimestamp;
+  };
+
   const formatTimestamp = function(d) {
     return `${d.date}/${d.month} - ${d.hours}:${d.minutes}`;
   };
@@ -42,7 +46,7 @@
     new Vue({
       el: '#app',
       data: appState,
-      methods: { addTimestamp, formatTimestamp, prepareNewTimestamp, reset }
+      methods: { addTimestamp, formatTimestamp, prepareNewTimestamp, reset, cancelAddTimestamp }
     });
   };
 

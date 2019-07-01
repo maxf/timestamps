@@ -18,6 +18,7 @@
         <input v-model="newTimestamp.minutes" type="number" placeholder="mm"/>
         <br/>
         <button v-on:click="addTimestamp">Add</button>
+        <button v-on:click="cancelAddTimestamp">Cancel</button>
       </div>
       <ul>
         <li v-for="t in timestamps">{{ formatTimestamp(t) }}</li>
