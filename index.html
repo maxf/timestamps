@@ -10,7 +10,7 @@
   <body>
     <div id="app">
       <h1>Timestamps</h1>
-      <div v-if="newTimestamp.date === ''">
+      <div v-if="!newTimestamp">
         <button class="big" @click="prepareNewTimestamp">New</button>
       </div>
       <div v-else>
