@@ -14,7 +14,12 @@
     newTimestamp: emptyTimestamp
   };
 
+  const formatTimestamp =
+    d => `${d.date}/${d.month + 1}/${d.year} - ${d.hours}:${d.minutes}`;
+
   const methods = {
+    formatTimestamp,
+
     prepareNewTimestamp: () => {
       const now = new Date();
       appState.newTimestamp = {
@@ -40,11 +45,17 @@
 
     cancelAddTimestamp: () => appState.newTimestamp = emptyTimestamp,
 
-    formatTimestamp: d => `${d.date}/${d.month + 1} - ${d.hours}:${d.minutes}`,
-
     reset: () => {
       appState.timestamps = []
       localStorage.setItem('timestamps','[]');
+    },
+
+    // copy the timestamps to the clipboard
+    copy: () => {
+      const copyText = appState.timestamps
+        .map(formatTimestamp)
+        .join();
+      navigator.clipboard.writeText(copyText);
     }
   };
 
