@@ -1,0 +1,25 @@
+.date-2 { width: 2em; }
+
+.date-4 { width: 4em; }
+
+body * {
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+
+button {
+  background: #32f;
+  border: none;
+  color: white;
+}
+
+button.big {
+  width: 100px;
+  height: 100px;
+}
+
+button.small {
+  width: 80px;
+  height: 30px;
+}

@@ -2,30 +2,33 @@
   <head>
     <link rel="icon" href="favico.png"/>
     <script src="vue.js"></script>
+    <link rel="stylesheet" href="main.css"/>
     <style>
-      input[type=number] { width: 4em }
     </style>
   </head>
   <body>
     <div id="app">
       <h1>Timestamps</h1>
       <div v-if="newTimestamp.date === ''">
-        <button @click="prepareNewTimestamp">New</button>
+        <button class="big" @click="prepareNewTimestamp">New</button>
       </div>
       <div v-else>
-        <button @click="addTimestamp">Add</button>
-        <input v-model="newTimestamp.date" type="number" placeholder="DD"/>
-        <input v-model="newTimestamp.month" type="number" placeholder="MM"/>
-        <input v-model="newTimestamp.year" type="number" placeholder="YYYY"/>
-        <input v-model="newTimestamp.hours" type="number" placeholder="hh"/>
-        <input v-model="newTimestamp.minutes" type="number" placeholder="mm"/>
-        <button @click="cancelAddTimestamp">Cancel</button>
+        <button class="big" @click="addTimestamp">Add</button>
+        <input class="date-2" v-model="newTimestamp.date" type="number"/>
+        <input class="date-2" v-model="newTimestamp.month + 1" type="number"/>
+        <input class="date-4" v-model="newTimestamp.year" type="number"/>
+        <input class="date-2" v-model="newTimestamp.hours" type="number"/>
+        <input class="date-2" v-model="newTimestamp.minutes" type="number"/>
+        <button class="big" @click="cancelAddTimestamp">Cancel</button>
       </div>
-
-      <ul>
-        <li v-for="t in timestamps">{{ formatTimestamp(t) }} <button @click="deleteTimestamp(t)">Delete</button></li>
-      </ul>
-      <button @click="reset">Reset</button>
+      <div v-if="timestamps.length">
+        <ul>
+          <li v-for="t in timestamps">{{ formatTimestamp(t) }}
+            <button class="small" @click="deleteTimestamp(t)">Delete</button>
+          </li>
+        </ul>
+        <button class="small" @click="reset">Reset</button>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>

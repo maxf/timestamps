@@ -21,7 +21,7 @@
         id: now.getTime(),
         date: now.getDate(),
         month: now.getMonth(),
-        year: now.getYear(),
+        year: now.getFullYear(),
         hours: now.getHours(),
         minutes: now.getMinutes()
       };
@@ -39,7 +39,7 @@
 
     cancelAddTimestamp: () => appState.newTimestamp = emptyTimestamp,
 
-    formatTimestamp: d => `${d.date}/${d.month} - ${d.hours}:${d.minutes}`,
+    formatTimestamp: d => `${d.date}/${d.month + 1} - ${d.hours}:${d.minutes}`,
 
     reset: () => appState.timestamps = []
   };
