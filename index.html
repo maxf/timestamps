@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="favico.png"/>
     <script src="vue.js"></script>
     <link rel="stylesheet" href="main.css"/>
@@ -14,11 +15,8 @@
       </div>
       <div v-else>
         <button class="big" @click="addTimestamp">Add</button>
-        <input class="date-2" v-model="newTimestamp.date" type="number"/>
-        <input class="date-2" v-model="newTimestamp.month + 1" type="number"/>
-        <input class="date-4" v-model="newTimestamp.year" type="number"/>
-        <input class="date-2" v-model="newTimestamp.hours" type="number"/>
-        <input class="date-2" v-model="newTimestamp.minutes" type="number"/>
+        <input class="date-2" v-model="newTimestamp.date" type="number"/>/<input class="date-2" v-model="newTimestamp.month + 1" type="number"/>/<input class="date-4" v-model="newTimestamp.year" type="number"/>
+        <input class="date-2" v-model="newTimestamp.hours" type="number"/>:<input class="date-2" v-model="newTimestamp.minutes" type="number"/>
         <button class="big" @click="cancelAddTimestamp">Cancel</button>
       </div>
       <div v-if="timestamps.length">

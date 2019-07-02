@@ -1,16 +1,16 @@
-.date-2 { width: 2em; }
+.date-2 { width: 1.5em; }
 
-.date-4 { width: 4em; }
+.date-4 { width: 3em; }
 
 body * {
-  font-size: 24px;
+  font-size: 20px;
   font-family: sans-serif;
 }
 
 
 button {
+  border: 1px solid white;
   background: #32f;
-  border: none;
   color: white;
 }
 
