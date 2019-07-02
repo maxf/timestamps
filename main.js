@@ -1,6 +1,7 @@
 (function() {
 
   const emptyTimestamp = {
+    id: '',
     date: '',
     month: '',
     year: '',
@@ -8,45 +9,46 @@
     minutes: ''
   };
 
-
   const appState = {
     timestamps: [],
     newTimestamp: emptyTimestamp
   };
 
-  const prepareNewTimestamp = function() {
-    const now = new Date();
-    appState.newTimestamp = {
-      date: now.getDate(),
-      month: now.getMonth(),
-      year: now.getYear(),
-      hours: now.getHours(),
-      minutes: now.getMinutes()
-    };
-  }
+  const methods = {
+    prepareNewTimestamp: () => {
+      const now = new Date();
+      appState.newTimestamp = {
+        id: now.getTime(),
+        date: now.getDate(),
+        month: now.getMonth(),
+        year: now.getYear(),
+        hours: now.getHours(),
+        minutes: now.getMinutes()
+      };
+    },
 
-  const addTimestamp = function() {
-    appState.timestamps.push(appState.newTimestamp);
-    appState.newTimestamp = emptyTimestamp;
+    addTimestamp: () => {
+      appState.timestamps.push(appState.newTimestamp);
+      appState.newTimestamp = emptyTimestamp;
+    },
+
+    deleteTimestamp: (timestampToRemove) => {
+      appState.timestamps =
+        appState.timestamps.filter(t => t.id !== timestampToRemove.id);
+    },
+
+    cancelAddTimestamp: () => appState.newTimestamp = emptyTimestamp,
+
+    formatTimestamp: d => `${d.date}/${d.month} - ${d.hours}:${d.minutes}`,
+
+    reset: () => appState.timestamps = []
   };
-
-  const cancelAddTimestamp = function() {
-    appState.newTimestamp = emptyTimestamp;
-  };
-
-  const formatTimestamp = function(d) {
-    return `${d.date}/${d.month} - ${d.hours}:${d.minutes}`;
-  };
-
-  const reset = function() {
-    appState.timestamps = [];
-  }
 
   const init = function() {
     new Vue({
+      methods,
       el: '#app',
-      data: appState,
-      methods: { addTimestamp, formatTimestamp, prepareNewTimestamp, reset, cancelAddTimestamp }
+      data: appState
     });
   };
 
