@@ -9,17 +9,19 @@
   <body>
     <div id="app">
       <h1>Timestamps</h1>
-      <button @click="prepareNewTimestamp">New</button>
-      <div v-if="newTimestamp.date !== ''">
+      <div v-if="newTimestamp.date === ''">
+        <button @click="prepareNewTimestamp">New</button>
+      </div>
+      <div v-else>
+        <button @click="addTimestamp">Add</button>
         <input v-model="newTimestamp.date" type="number" placeholder="DD"/>
         <input v-model="newTimestamp.month" type="number" placeholder="MM"/>
         <input v-model="newTimestamp.year" type="number" placeholder="YYYY"/>
         <input v-model="newTimestamp.hours" type="number" placeholder="hh"/>
         <input v-model="newTimestamp.minutes" type="number" placeholder="mm"/>
-        <br/>
-        <button @click="addTimestamp">Add</button>
         <button @click="cancelAddTimestamp">Cancel</button>
       </div>
+
       <ul>
         <li v-for="t in timestamps">{{ formatTimestamp(t) }} <button @click="deleteTimestamp(t)">Delete</button></li>
       </ul>
