@@ -29,6 +29,7 @@
 
     addTimestamp: () => {
       appState.timestamps.push(appState.newTimestamp);
+      localStorage.setItem('timestamps', JSON.stringify(appState.timestamps));
       appState.newTimestamp = emptyTimestamp;
     },
 
@@ -41,16 +42,34 @@
 
     formatTimestamp: d => `${d.date}/${d.month + 1} - ${d.hours}:${d.minutes}`,
 
-    reset: () => appState.timestamps = []
+    reset: () => {
+      appState.timestamps = []
+      localStorage.setItem('timestamps','[]');
+    }
+  };
+
+
+  const updateFromLocalStorage = function() {
+    const savedValue = localStorage.getItem('timestamps') || [];
+    const newAppState = appState;
+    try {
+      newAppState.timestamps = JSON.parse(savedValue)
+    } catch (error) {
+      newAppState.timestamps = [];
+      localStorage.setItem('timestamps', '[]');
+    }
+    return newAppState;
   };
 
   const init = function() {
+    const updatedAppState = updateFromLocalStorage(appState);
     new Vue({
       methods,
       el: '#app',
-      data: appState
+      data: updatedAppState
     });
   };
+
 
   document.addEventListener('readystatechange', event => {
     if (event.target.readyState === 'interactive') {
